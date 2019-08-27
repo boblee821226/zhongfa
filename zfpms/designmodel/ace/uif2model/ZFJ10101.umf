@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<uif2designmodel>
+    <uif2elementHModel>
+        <uif2element className="" elementType="TEMPLATE_ELEMENT" id="4255123904458367464" isLeaf="true" nodeKey="bt" pid="BILL_TYPE_ID" pk_resourceinfo="" showName="ZFJ10101" templateId="zfpms/designmodel/templet/zfpms_data/billtemplet/ZFJ10101.btf" type="BILL_TYPE_ID">
+        </uif2element>
+        <uif2element className="" elementType="TEMPLATE_ELEMENT" id="-8426642670949551573" isLeaf="true" nodeKey="qt" pid="QUERY_TYPE_ID" pk_resourceinfo="" showName="PMS数据主表" templateId="zfpms/designmodel/templet/zfpms_data/querytemplet/ZFJ10101.qtf" type="QUERY_TYPE_ID">
+        </uif2element>
+        <uif2element className="" elementType="TEMPLATE_ELEMENT" id="-1190439803449431037" isLeaf="true" nodeKey="ot" pid="PRINT_TYPE_ID" pk_resourceinfo="" showName="PMS数据主表" templateId="zfpms/designmodel/templet/zfpms_data/outtemplet/ZFJ10101.otf" type="PRINT_TYPE_ID">
+        </uif2element>
+        <uif2element className="nc.ui.pubapp.uif2app.model.BillManageModel" elementType="MODEL" id="9173733809135198750" isLeaf="true" pid="MODEL" refMetaEntityID="012c3fb6-e229-4482-a20d-58e5b8284e54" showName="PUBAPP平面模型(BillManageModel)实例对象" type="nc.ui.pubapp.uif2app.model.BillManageModel">
+            <model billType="">
+                <busiObjAdaptFactory mode="MD">
+                </busiObjAdaptFactory>
+            </model>
+            <relatedElementMap>
+            </relatedElementMap>
+        </uif2element>
+        <uif2element className="nc.ui.pubapp.uif2app.view.ShowUpableBillForm" elementType="VIEW" id="-7874983800894542362" isLeaf="true" pid="VIEW" showName="PUBAPP表单控件(ShowUpableBillForm)实例对象" type="nc.ui.pubapp.uif2app.view.ShowUpableBillForm">
+            <panel autoExecLoadFormula="Y" nodekey="PUBAPP表单控件(ShowUpableBillForm)实例对象" showTotalLine="Y">
+            </panel>
+            <relatedElementMap>
+                <relatedElement elementId="4255123904458367464" key="refTemplate">
+                </relatedElement>
+                <relatedElement elementId="9173733809135198750" key="dependDataModel">
+                </relatedElement>
+            </relatedElementMap>
+        </uif2element>
+        <uif2element className="nc.ui.pubapp.uif2app.tangramlayout.UEQueryAreaShell" elementType="VIEW" id="686719956990212920" isLeaf="true" pid="VIEW" queryAreaCreator="7022009672399122941" showName="查询区域控件实例对象" type="nc.ui.pubapp.uif2app.tangramlayout.UEQueryAreaShell">
+            <panel>
+            </panel>
+            <relatedElementMap>
+                <relatedElement elementId="7022009672399122941" key="queryAreaCreator">
+                </relatedElement>
+            </relatedElementMap>
+        </uif2element>
+        <uif2element className="nc.ui.pubapp.uif2app.tangramlayout.UECardLayoutToolbarPanel" elementType="VIEW" goComponent="-7236392348523978577" id="-398620576790391413" isLeaf="true" pid="VIEW" saveAction="-757750336578038306" showName="卡片界面工具栏和返回按钮控件实例对象" type="nc.ui.pubapp.uif2app.tangramlayout.UECardLayoutToolbarPanel">
+            <panel>
+            </panel>
+            <relatedElementMap>
+                <relatedElement elementId="-757750336578038306" key="saveAction">
+                </relatedElement>
+                <relatedElement elementId="-7236392348523978577" key="goComponent">
+                </relatedElement>
+                <relatedElement elementId="9173733809135198750" key="dependDataModel">
+                </relatedElement>
+            </relatedElementMap>
+        </uif2element>
+        <uif2element className="nc.ui.pubapp.uif2app.view.ShowUpableBillListView" elementType="VIEW" id="-7236392348523978577" isLeaf="true" pid="VIEW" showName="PUBAPP列表视图控件(ShowUpableBillListView)实例对象" type="nc.ui.pubapp.uif2app.view.ShowUpableBillListView">
+            <panel multiSelectionEnable="Y" multiSelectionMode="0" nodekey="PUBAPP列表视图控件(ShowUpableBillListView)实例对象">
+            </panel>
+            <relatedElementMap>
+                <relatedElement elementId="4255123904458367464" key="refTemplate">
+                </relatedElement>
+                <relatedElement elementId="9173733809135198750" key="dependDataModel">
+                </relatedElement>
+            </relatedElementMap>
+        </uif2element>
+        <uif2element className="" dependModel="9173733809135198750" elementType="ACTION" id="9071507493003619355" isDependModelStatus="true" isLeaf="false" isTopAction="true" name="newActions" pid="ACTION" showName="newActions 节点级按钮容器" type="">
+            <actions>
+                <uif2element className="nc.ui.pubapp.uif2app.actions.AddAction" elementType="ACTION" id="-5272486007798284229" isLeaf="true" pid="-7826853678468100170" refBillType="ZF01" showName="新增" type="nc.ui.pubapp.uif2app.actions.AddAction">
+                    <ncaction Code="Add" LongDescription="" Name="新增" ShortDescription="新增(Ctrl+N)" switchview="-7874983800894542362">
+                        <accelerator keyCode="78" modifiers="130">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                        <relatedElement elementId="-7874983800894542362" key="switchView">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+                <uif2element className="nc.ui.pubapp.uif2app.actions.EditAction" elementType="ACTION" id="-4124020245927285826" isLeaf="true" pid="-7826853678468100170" showName="修改" type="nc.ui.pubapp.uif2app.actions.EditAction">
+                    <ncaction Code="Edit" LongDescription="" Name="修改" ShortDescription="修改(Ctrl+E)" switchview="-7874983800894542362">
+                        <accelerator keyCode="69" modifiers="130">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+                
+						<uif2element className="nc.ui.pubapp.uif2app.actions.pflow.DeleteScriptAction" elementType="ACTION" id="6960757286150543961" isLeaf="true" pid="-7826853678468100170" refBillType="ZF01" showName="删除" type="nc.ui.pubapp.uif2app.actions.pflow.DeleteScriptAction">
+                    <ncaction Code="Delete" LongDescription="" Name="删除" ShortDescription="删除(Ctrl+Shift+Del)">
+                        <accelerator keyCode="127" modifiers="195">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+    	    	
+                <uif2element className="nc.ui.pubapp.uif2app.query2.action.DefaultQueryAction" elementType="ACTION" id="7022009672399122941" isLeaf="true" pid="-7826853678468100170" refQueryTemplate="-8426642670949551573" showName="查询" type="nc.ui.pubapp.uif2app.query2.action.DefaultQueryAction">
+                    <ncaction Code="Query" LongDescription="" Name="查询" ShortDescription="查询(F3)">
+                        <accelerator keyCode="114" modifiers="0">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                        <relatedElement elementId="-8426642670949551573" key="refQueryTemplate">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+                        <uif2element className="nc.ui.pubapp.uif2app.actions.CopyAction" elementType="ACTION" id="-4056305896659733392" isLeaf="true" pid="-7826853678468100170" showName="复制" type="nc.ui.pubapp.uif2app.actions.CopyAction">
+                    <ncaction Code="Copy" LongDescription="" Name="复制" ShortDescription="复制(Ctrl+Alt+C)">
+                        <accelerator keyCode="67" modifiers="650">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="-7874983800894542362" key="refViewId">
+                        </relatedElement>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+						<uif2element className="nc.funcnode.ui.action.SeparatorAction" elementType="ACTION" id="-8549857973941844568" isLeaf="true" pid="-7826853678468100170" showName="分隔" type="nc.funcnode.ui.action.SeparatorAction">
+		            <ncaction Code="separator" LongDescription="" Name="分隔" ShortDescription="">
+		            </ncaction>
+		            <relatedElementMap>
+		            </relatedElementMap>
+		        </uif2element>
+                <uif2element className="nc.ui.pubapp.uif2app.query2.action.DefaultRefreshAction" elementType="ACTION" id="-1509114451579685287" isLeaf="true" pid="-7826853678468100170" showName="刷新" type="nc.ui.pubapp.uif2app.query2.action.DefaultRefreshAction">
+                    <ncaction Code="Refresh" LongDescription="" Name="刷新" ShortDescription="刷新(F5)">
+                        <accelerator keyCode="116" modifiers="0">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+                <uif2element className="nc.funcnode.ui.action.SeparatorAction" elementType="ACTION" id="-8549857973941844569" isLeaf="true" pid="-7826853678468100170" showName="分隔" type="nc.funcnode.ui.action.SeparatorAction">
+		            <ncaction Code="separator" LongDescription="" Name="分隔" ShortDescription="">
+		            </ncaction>
+		            <relatedElementMap>
+		            </relatedElementMap>
+		        </uif2element>
+                        <uif2element className="nc.ui.pubapp.uif2app.actions.pflow.CommitScriptAction" elementType="ACTION" id="-7990279993973992816" isLeaf="true" pid="-7826853678468100170" refBillType="ZF01" showName="提交" type="nc.ui.pubapp.uif2app.actions.pflow.CommitScriptAction">
+                    <ncaction Code="Commit" LongDescription="" Name="提交" ShortDescription="提交(Ctrl+Alt+U)">
+                        <accelerator keyCode="85" modifiers="650">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="-7874983800894542362" key="refViewId">
+                        </relatedElement>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+                <uif2element className="nc.ui.pubapp.uif2app.actions.pflow.UnCommitScriptAction" elementType="ACTION" id="-697282076057685737" isLeaf="true" pid="-7826853678468100170" refBillType="ZF01" showName="收回" type="nc.ui.pubapp.uif2app.actions.pflow.UnCommitScriptAction">
+                    <ncaction Code="UnCommit" LongDescription="" Name="收回" ShortDescription="">
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="-7874983800894542362" key="refViewId">
+                        </relatedElement>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+                <uif2element className="nc.ui.pubapp.uif2app.actions.pflow.ApproveScriptAction" elementType="ACTION" id="-387584713084805850" isLeaf="true" pid="-7826853678468100170" refBillType="ZF01" showName="审批" type="nc.ui.pubapp.uif2app.actions.pflow.ApproveScriptAction">
+                    <ncaction Code="Approve" LongDescription="" Name="审批" ShortDescription="审批(Ctrl+U)">
+                        <accelerator keyCode="85" modifiers="130">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="-7874983800894542362" key="refViewId">
+                        </relatedElement>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+                <uif2element className="nc.ui.pubapp.uif2app.actions.pflow.UNApproveScriptAction" elementType="ACTION" id="8823767249904146940" isLeaf="true" pid="-7826853678468100170" refBillType="ZF01" showName="取消审批" type="nc.ui.pubapp.uif2app.actions.pflow.UNApproveScriptAction">
+                    <ncaction Code="UnApprove" LongDescription="" Name="取消审批" ShortDescription="取消审批(Alt+U)">
+                        <accelerator keyCode="85" modifiers="520">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="-7874983800894542362" key="refViewId">
+                        </relatedElement>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+				
+		<uif2element className="nc.funcnode.ui.action.SeparatorAction" elementType="ACTION" id="-8549857973941844570" isLeaf="true" pid="-7826853678468100170" showName="分隔" type="nc.funcnode.ui.action.SeparatorAction">
+            <ncaction Code="separator" LongDescription="" Name="分隔" ShortDescription="">
+            </ncaction>
+            <relatedElementMap>
+            </relatedElementMap>
+        </uif2element>
+		
+				<uif2element className="nc.ui.pubapp.uif2app.actions.LinkQueryAction" elementType="ACTION" id="-7378339917962940413" isLeaf="true" pid="-7826853678468100170" refBillType="ZF01" showName="联查单据" type="nc.ui.pubapp.uif2app.actions.LinkQueryAction">
+                    <ncaction Code="BillLinkQuery" LongDescription="" Name="联查单据" ShortDescription="联查单据(Ctrl+K)">
+                        <accelerator keyCode="75" modifiers="130">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+				
+		<uif2element className="nc.funcnode.ui.action.SeparatorAction" elementType="ACTION" id="-8549857973941844571" isLeaf="true" pid="-7826853678468100170" showName="分隔" type="nc.funcnode.ui.action.SeparatorAction">
+            <ncaction Code="separator" LongDescription="" Name="分隔" ShortDescription="">
+            </ncaction>
+            <relatedElementMap>
+            </relatedElementMap>
+        </uif2element>
+		
+		                <uif2element className="nc.ui.pubapp.uif2app.actions.MetaDataBasedPrintAction:1" elementType="ACTION" id="-672921243809864642" isLeaf="true" pid="-7826853678468100170" refPrintTemplate="-1190439803449431037" showName="预览" type="nc.ui.pubapp.uif2app.actions.MetaDataBasedPrintAction:1">
+                    <ncaction Code="Preview" LongDescription="" Name="预览" ShortDescription="预览(Ctrl+W)">
+                        <accelerator keyCode="87" modifiers="130">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                        <relatedElement elementId="-1190439803449431037" key="refPrintTemplate">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+                <uif2element className="nc.ui.pubapp.uif2app.actions.MetaDataBasedPrintAction:2" elementType="ACTION" id="8812282020268745652" isLeaf="true" pid="-7826853678468100170" refPrintTemplate="-1190439803449431037" showName="打印" type="nc.ui.pubapp.uif2app.actions.MetaDataBasedPrintAction:2">
+                    <ncaction Code="Print" LongDescription="" Name="打印" ShortDescription="打印(Ctrl+P)">
+                        <accelerator keyCode="80" modifiers="130">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                        <relatedElement elementId="-1190439803449431037" key="refPrintTemplate">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+                <uif2element className="nc.ui.pubapp.uif2app.actions.OutputAction" elementType="ACTION" id="1073866661321985072" isLeaf="true" pid="-7826853678468100170" refPrintTemplate="-1190439803449431037" showName="输出..." type="nc.ui.pubapp.uif2app.actions.OutputAction">
+                    <ncaction Code="output" LongDescription="" Name="输出..." ShortDescription="输出...">
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="-7874983800894542362" key="refViewId">
+                        </relatedElement>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                        <relatedElement elementId="-1190439803449431037" key="refPrintTemplate">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+				
+		<uif2element className="nc.funcnode.ui.action.SeparatorAction" elementType="ACTION" id="-8549857973941844572" isLeaf="true" pid="-7826853678468100170" showName="分隔" type="nc.funcnode.ui.action.SeparatorAction">
+            <ncaction Code="separator" LongDescription="" Name="分隔" ShortDescription="">
+            </ncaction>
+            <relatedElementMap>
+            </relatedElementMap>
+        </uif2element>
+		
+		                <uif2element className="nc.ui.pubapp.uif2app.actions.pflow.PFApproveStatusInfoAction" elementType="ACTION" id="3129260317993761257" isLeaf="true" pid="-7826853678468100170" showName="查看审批意见" type="nc.ui.pubapp.uif2app.actions.pflow.PFApproveStatusInfoAction">
+                    <ncaction Code="ApproveInfo" LongDescription="" Name="查看审批意见" ShortDescription="查看审批意见">
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+                    </actions>
+            <editActions>
+            
+                         	<uif2element className="nc.ui.pubapp.uif2app.actions.pflow.SaveScriptAction" elementType="ACTION" id="-757750336578038306" isLeaf="true" pid="-1512265940909075905" refBillType="ZF01" showName="保存" type="nc.ui.pubapp.uif2app.actions.pflow.SaveScriptAction">
+                    <ncaction Code="Save" LongDescription="" Name="保存" ShortDescription="保存(Ctrl+S)">
+                        <accelerator keyCode="83" modifiers="130">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="-7874983800894542362" key="refViewId">
+                        </relatedElement>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+    	                <uif2element className="nc.ui.pubapp.uif2app.actions.CancelAction" elementType="ACTION" id="1476910736135301590" isLeaf="true" pid="-1512265940909075905" showName="取消" type="nc.ui.pubapp.uif2app.actions.CancelAction">
+                    <ncaction Code="Cancel" LongDescription="" Name="取消" ShortDescription="取消(Ctrl+Q)">
+                        <accelerator keyCode="81" modifiers="130">
+                        </accelerator>
+                    </ncaction>
+                    <relatedElementMap>
+                        <relatedElement elementId="-7874983800894542362" key="refViewId">
+                        </relatedElement>
+                        <relatedElement elementId="9173733809135198750" key="refModelId">
+                        </relatedElement>
+                    </relatedElementMap>
+                </uif2element>
+            </editActions>
+        </uif2element>
+    </uif2elementHModel>
+    <actionModel>
+        <topActions topActions="9071507493003619355">
+        </topActions>
+        <shoulderActions>
+        </shoulderActions>
+        <tabActions>
+        </tabActions>
+    </actionModel>
+    <uif2modeldriven useModelIdList="">
+        <uif2element className="" elementType="" id="MODEL_DATAMANAGER" isLeaf="false" pid="" showName="ModelDataManager" type="MODEL_DATAMANAGER">
+        </uif2element>
+        <cellList>
+            <mxCell height="80.0" id="MODEL_DATAMANAGER" style="imageAlign=center;imageVerticalAlign=top;align=center;verticalAlign=bottom;image=/images/uapde/outlook_generatevo.gif;shape=SHAPE_UIF2LABEL;imageWidth=50;imageHeight=50" type="nc.ui.uapde.uif2assemble.modeldrivendesignmx.UIF2ModelDataMrgMxCell" width="100.0" x="50.0" y="80.0">
+            </mxCell>
+        </cellList>
+        <edgeList>
+        </edgeList>
+        <dmDrivenMap>
+        </dmDrivenMap>
+        <m2mListenMap>
+        </m2mListenMap>
+    </uif2modeldriven>
+    <tangramLayoutDataRoot>
+        <TBDataNode className="" elementType="SPLIT_ELEMENT" id="-9003523098755158015" isLeaf="true" name="cardLayout" pid="SPLIT_ELEMENT" showMode="CardLayout" showName="页签容纳控件" type="nc.ui.uif2.tangramlayout.node.TBNode">
+            <tabs>
+                <HSDataNode className="" dividerLocation="215.0" elementType="SPLIT_ELEMENT" id="-8164897790452256350" isLeaf="true" name="列表" pid="SPLIT_ELEMENT" showMode="SplitPane" showName="纵向分割控件" type="nc.ui.uif2.tangramlayout.node.HSNode">
+                    <left>
+                        <CDataNode className="" elementType="SPLIT_ELEMENT" id="1167415250060357451" isLeaf="false" name="" pid="" refActionIds="" refViewNodeId="686719956990212920" showName="" type="nc.ui.uif2.tangramlayout.node.CNode">
+                        </CDataNode>
+                    </left>
+                    <right>
+                        <CDataNode className="" elementType="SPLIT_ELEMENT" id="5025466979502902731" isLeaf="false" name="" pid="" refActionIds="" refViewNodeId="-7236392348523978577" showName="" type="nc.ui.uif2.tangramlayout.node.CNode">
+                        </CDataNode>
+                    </right>
+                </HSDataNode>
+                <VSDataNode className="" dividerLocation="43.0" elementType="SPLIT_ELEMENT" id="-9083103100780405328" isLeaf="true" name="卡片" pid="SPLIT_ELEMENT" showMode="SplitPane" showName="横向分割控件" type="nc.ui.uif2.tangramlayout.node.VSNode">
+                    <up>
+                        <CDataNode className="" elementType="SPLIT_ELEMENT" id="4128323646628445507" isLeaf="false" name="" pid="" refActionIds="" refViewNodeId="-398620576790391413" showName="" type="nc.ui.uif2.tangramlayout.node.CNode">
+                        </CDataNode>
+                    </up>
+                    <down>
+                        <CDataNode className="" elementType="SPLIT_ELEMENT" id="-8551000074570866959" isLeaf="false" name="" pid="" refActionIds="" refViewNodeId="-7874983800894542362" showName="" type="nc.ui.uif2.tangramlayout.node.CNode">
+                        </CDataNode>
+                    </down>
+                </VSDataNode>
+            </tabs>
+        </TBDataNode>
+    </tangramLayoutDataRoot>
+</uif2designmodel>

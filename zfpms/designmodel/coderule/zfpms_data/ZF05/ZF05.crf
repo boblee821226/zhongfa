@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="gbk"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="billCodeRule" class="nc.pubapp.pade.billcode.vo.BillCodeRule"><property name="baseVO"><bean class="nc.pubapp.pade.billcode.vo.BillCodeBase"><property name="codemode" value="after"/>
+<property name="codescope" value="g"/>
+<property name="format" value="yyyyMMdd"/>
+<property name="isautofill" value="true"/>
+<property name="isdefault" value="false"/>
+<property name="iseditable" value="false"/>
+<property name="nbcrcode" value="ZF05"/>
+<property name="pk_billcodebase" value="0001ZZ100000000224LS"/>
+<property name="pk_group" value="GLOBLE00000000000000"/>
+<property name="rulecode" value="ZF05"/>
+<property name="rulename" value="ZF05"/>
+<property name="ts" value="2019-05-30 15:31:11"/>
+</bean>
+</property>
+
+<property name="elems">
+<list><bean class="nc.pubapp.pade.billcode.vo.BillCodeElem"><property name="elemlenth" value="4"/>
+<property name="elemtype" value="0"/>
+<property name="elemvalue" value="ZF05"/>
+<property name="eorder" value="0"/>
+<property name="isrefer" value="0"/>
+<property name="pk_billcodebase" value="0001ZZ100000000224LS"/>
+<property name="pk_billcodeelem" value="0001ZZ100000000224LT"/>
+</bean>
+<bean class="nc.pubapp.pade.billcode.vo.BillCodeElem"><property name="elemlenth" value="8"/>
+<property name="elemtype" value="2"/>
+<property name="elemvalue" value="2019-05-30 15:31:05"/>
+<property name="eorder" value="1"/>
+<property name="isrefer" value="0"/>
+<property name="pk_billcodebase" value="0001ZZ100000000224LS"/>
+<property name="pk_billcodeelem" value="0001ZZ100000000224LU"/>
+</bean>
+<bean class="nc.pubapp.pade.billcode.vo.BillCodeElem"><property name="elemlenth" value="8"/>
+<property name="elemtype" value="3"/>
+<property name="elemvalue" value="ZF05"/>
+<property name="eorder" value="2"/>
+<property name="isrefer" value="0"/>
+<property name="pk_billcodebase" value="0001ZZ100000000224LS"/>
+<property name="pk_billcodeelem" value="0001ZZ100000000224LV"/>
+</bean>
+</list>
+</property>
+</bean>
+
+</beans>

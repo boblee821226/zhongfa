@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding='gb2312'?>
+<module name="zfpms">
+  <public>
+	<component remote="true" singleton="true"  tx="CMT">
+	  <interface>nc.itf.zfpms.IZfpms_dataMaintain</interface>
+	  <implementation>nc.impl.zfpms.Zfpms_dataMaintainImpl</implementation>
+	</component>
+
+  </public> 
+</module> 

@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- 环境变量 -->
+	<bean id="context" class="nc.vo.uif2.LoginContext"></bean>
+
+	<!-- 模型部分配置*********************************************************** -->
+
+	<!-- 应用服务类，负责进行模型操作的处理 -->
+	<bean id="bmModelModelService" class="nc.ui.zfpms.cyskmx.ace.serviceproxy.AceZfpms_dataMaintainProxy"/>
+
+	
+	<!-- 对象转换器工厂，由此获取操作对象的特征信息 -->
+	<bean id="BOAdapterFactory" class="nc.vo.bd.meta.GeneralBDObjectAdapterFactory">
+		<property name="mode" value="MD"/>
+	</bean>
+
+   
+	<!-- 层次结构构造策略 -->
+
+	<!-- 模型元素 -->
+	<!--========= 模型元素：[PUBAPP平面模型(BillManageModel)实例对象] ==========-->
+	<bean id="bmModel" class="nc.ui.pubapp.uif2app.model.BillManageModel">
+		<property name="context"><ref bean="context"/></property>
+		<property name="businessObjectAdapterFactory"><ref bean="BOAdapterFactory"/></property>
+	</bean>
+
+	
+	<!-- 数据模型管理器，主要负责各种方式的模型初始化 -->
+	<bean id="bmModelModelDataManager" class="nc.ui.pubapp.uif2app.query2.model.ModelDataManager">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="service"><ref bean="bmModelModelService" /></property>
+	</bean>
+
+	
+	<!-- Mediator，模型之间监听关系部分 -->
+
+
+    <!-- 组织面板//newadd -->
+
+	<!-- 卡片界面的工具栏和返回按钮 -->
+
+
+	<!-- 模板容器，负责对模板的统一装载 -->
+	<bean id="templateContainer" class="nc.ui.pubapp.uif2app.view.TemplateContainer"  init-method="load">
+		<property name="context" ref="context"/>
+		<property name="nodeKeies">
+			<list>
+				<value>bt</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- 界面元素 ***********************************************************-->
+	<!--====== 视图元素：[查询区域控件实例对象] ==============-->
+	<bean id="viewa" class="nc.ui.pubapp.uif2app.tangramlayout.UEQueryAreaShell" init-method="initUI">
+		<property name="queryAreaCreator" ref="defaultQueryAction" />
+	</bean>
+
+	<!--====== 视图元素：[PUBAPP列表视图控件(ShowUpableBillListView)实例对象] ==============-->
+	<bean id="billListView" class="nc.ui.pubapp.uif2app.view.ShowUpableBillListView" init-method="initUI">
+		<property name="model"><ref bean="bmModel" /></property>
+		<property name="nodekey" value="bt" />
+		<property name="multiSelectionEnable" value="true" />
+		<property name="templateContainer" ref="templateContainer"/>
+	</bean>
+
+	<!--====== 视图元素：[卡片界面工具栏和返回按钮控件实例对象] ==============-->
+	<bean id="viewb" class="nc.ui.pubapp.uif2app.tangramlayout.UECardLayoutToolbarPanel" >
+		<property name="model"><ref bean="bmModel" /></property>
+		<property name="titleAction">
+			<bean id="returnAction" class="nc.ui.pubapp.uif2app.actions.UEReturnAction">
+				<property name="goComponent" ref="billListView" />
+				<property name="saveAction" ref="saveScriptAction" />
+				<property name="model" ref="bmModel" />
+			</bean>
+		</property>
+	</bean>
+
+	<!--====== 视图元素：[PUBAPP表单控件(ShowUpableBillForm)实例对象] ==============-->
+	<bean id="billForm" class="nc.ui.pubapp.uif2app.view.ShowUpableBillForm" init-method="initUI">
+		<property name="model"><ref bean="bmModel" /></property>
+		<property name="nodekey" value="bt" />
+		<!-- 表体行操作按钮注册，这只是一组默认设置，开发人员需要自己在此添加其他需要的表体行操作按钮 -->
+		<property name="bodyLineActions">
+			<list>
+				<bean class="nc.ui.pubapp.uif2app.actions.BodyAddLineAction" />
+				<bean class="nc.ui.pubapp.uif2app.actions.BodyInsertLineAction" />
+				<bean class="nc.ui.pubapp.uif2app.actions.BodyDelLineAction" />
+			</list>
+		</property>
+	</bean>
+
+	
+	<!-- 界面布局总装*********************************************************** -->
+	<bean id="container" class="nc.ui.uif2.TangramContainer" init-method="initUI">
+		<property name="tangramLayoutRoot">
+					<bean class="nc.ui.uif2.tangramlayout.node.TBNode">
+				<property name="tabs">
+					<list>
+						<bean class="nc.ui.uif2.tangramlayout.node.HSNode">
+							<property name="left">
+								<bean class="nc.ui.uif2.tangramlayout.node.CNode">
+									<property name="component">
+										<ref bean="viewa" />
+									</property>
+								</bean>
+							</property>
+							<property name="right">
+								<bean class="nc.ui.uif2.tangramlayout.node.CNode">
+									<property name="component">
+										<ref bean="billListView" />
+									</property>
+								</bean>
+							</property>
+							<property name="dividerLocation" value="215.0f" />
+							<property name="name" value="列表" />
+						</bean>
+						<bean class="nc.ui.uif2.tangramlayout.node.VSNode">
+							<property name="up">
+								<bean class="nc.ui.uif2.tangramlayout.node.CNode">
+									<property name="component">
+										<ref bean="viewb" />
+									</property>
+								</bean>
+							</property>
+							<property name="down">
+								<bean class="nc.ui.uif2.tangramlayout.node.CNode">
+									<property name="component">
+										<ref bean="billForm" />
+									</property>
+								</bean>
+							</property>
+							<property name="dividerLocation" value="43.0f" />
+							<property name="name" value="卡片" />
+						</bean>
+					</list>
+				</property>
+				<property name="name" value="cardLayout" />
+			<property name="showMode" value="CardLayout" />
+			</bean>
+
+		</property>
+		<property name="actions">
+			<list>
+				<!-- 注释原先按钮
+				<ref bean="addAction" />
+				<ref bean="editAction" />
+				<ref bean="deleteScriptAction" />
+				<ref bean="defaultQueryAction" />
+				<ref bean="copyAction" />
+				<ref bean="separatorAction" />
+				<ref bean="defaultRefreshAction" />
+				<ref bean="separatorAction" />
+				<ref bean="commitScriptAction" />
+				<ref bean="unCommitScriptAction" />
+				<ref bean="approveScriptAction" />
+				<ref bean="uNApproveScriptAction" />
+				<ref bean="separatorAction" />
+				<ref bean="linkQueryAction" />
+				<ref bean="separatorAction" />
+				<ref bean="metaDataBasedPrintAction" />
+				<ref bean="metaDataBasedPrintActiona" />
+				<ref bean="outputAction" />
+				<ref bean="separatorAction" />
+				<ref bean="pFApproveStatusInfoAction" />
+				-->
+			</list>
+		</property>
+		
+		<property name="editActions">
+			<list>
+				<!-- 注释原先按钮
+				<ref bean="saveScriptAction" />
+				<ref bean="cancelAction" />
+				-->
+			</list>
+		</property>
+
+		<property name="model">
+			<ref bean="bmModel" />
+		</property>		
+		<!--
+		<property name="model">
+			<ref bean="$vmObject.topActionDependModel"/>
+		</property>
+		-->
+	</bean>
+	
+	
+	<!-- BEGIN 卡片  与  列表  要设置不同的按钮 ZF 2019年5月30日17:01:31-->
+	<bean id="toftpanelActionContributors" class="nc.ui.uif2.actions.ActionContributors">
+		<property name="contributors">
+			<list>
+				<ref bean="actionsOfList" />
+				<ref bean="actionsOfCard" />
+			</list>
+		</property>
+	</bean>
+	<!-- 列表的按钮 -->
+	<bean id="actionsOfList" class="nc.ui.uif2.actions.StandAloneToftPanelActionContainer">
+		<constructor-arg ref="billListView" />
+		<property name="actions">
+			<list>
+				<ref bean="qushuAction" />
+				<ref bean="separatorAction" />
+				<ref bean="defaultQueryAction" />
+				<ref bean="separatorAction" />
+				<ref bean="deleteScriptAction" />
+				<ref bean="separatorAction" />
+				<ref bean="defaultRefreshAction" />
+				<ref bean="separatorAction" />
+				<ref bean="commitScriptAction" />
+				<ref bean="unCommitScriptAction" />
+				<ref bean="approveScriptAction" />
+				<ref bean="uNApproveScriptAction" />
+			</list>
+		</property>
+	</bean>
+	<!-- 卡片的按钮 -->
+	<bean id="actionsOfCard" class="nc.ui.uif2.actions.StandAloneToftPanelActionContainer">
+		<constructor-arg ref="billForm" />
+		<property name="actions">
+			<list>
+				<ref bean="separatorAction" />
+				<ref bean="deleteScriptAction" />
+				<ref bean="separatorAction" />
+				<ref bean="refreshCardAction" />
+				<ref bean="separatorAction" />
+				<ref bean="commitScriptAction" />
+				<ref bean="unCommitScriptAction" />
+				<ref bean="approveScriptAction" />
+				<ref bean="uNApproveScriptAction" />
+				<ref bean="separatorAction" />
+				<ref bean="outputAction" /><!-- 输出... -->
+			</list>
+		</property>
+		<property name="editActions" ref="normEditAction" />
+		<property name="model" ref="bmModel" />
+	</bean>
+	<!-- 编辑状态的按钮 -->
+	<bean id="normEditAction" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="saveScriptAction" />
+				<ref bean="cancelAction" />
+			</list>
+		</constructor-arg>
+	</bean>
+	<!-- END 卡片列表 按钮分开 -->
+	
+	
+	<!-- 打开节点监听 newadd-->
+	<bean id="InitDataListener" class="nc.ui.pubapp.uif2app.model.DefaultFuncNodeInitDataListener">
+		<property name="model" ref="bmModel"/>
+		<property name="context" ref="context"></property>
+		<property name="voClassName" value="nc.vo.zfpms.data.DataBillVO"/>
+	</bean>
+
+
+
+	<!-- ClosingListener 编辑态关闭节点时提示是否保存//newadd***************************************************-->
+	<!-- 节点关闭前校验 -->
+	<bean id="ClosingListener" class="nc.ui.pubapp.common.validateservice.ClosingCheck" >
+		<property name="model" ref="bmModel" />
+		<property name="saveAction" ref="saveScriptAction" />
+	</bean>
+
+
+	<!-- 事件监听newadd -->
+	<bean id="bmModelEventMediator" class="nc.ui.pubapp.uif2app.model.AppEventHandlerMediator">
+		<property name="model" ref="bmModel" />
+		<property name="handlerGroup">
+			<list>
+				<!-- nc.ui.pubapp.uif2app.event.OrgChangedEvent -->
+				<bean class="nc.ui.pubapp.uif2app.event.EventHandlerGroup">
+					<property name="event" value="nc.ui.pubapp.uif2app.event.OrgChangedEvent" />
+					<property name="handler">
+						<bean class="nc.ui.zfpms.cyskmx.ace.handler.AceOrgChangeHandler" >
+							<property name="billForm" ref="billForm" />
+						</bean>
+					</property>
+				</bean>
+				<!-- nc.ui.pubapp.uif2app.event.billform.AddEvent -->
+				<bean class="nc.ui.pubapp.uif2app.event.EventHandlerGroup">
+					<property name="event" value="nc.ui.pubapp.uif2app.event.billform.AddEvent" />
+					<property name="handler">
+						<bean class="nc.ui.zfpms.cyskmx.ace.handler.AceAddHandler" />
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!--懒加载信息配置*******************************************************-->
+	<!--懒加载，加载表体数据-->
+	<bean id="billLazilyLoader" class="nc.ui.pubapp.uif2app.lazilyload.DefaultBillLazilyLoader" />
+	<bean id="bmModelLasilyLodadMediator" class="nc.ui.pubapp.uif2app.lazilyload.LazilyLoadManager">
+		<property name="model" ref="bmModel" />
+		<property name="loader" ref="billLazilyLoader" />
+		<property name="lazilyLoadSupporter">
+			<list>
+				<bean class="nc.ui.pubapp.uif2app.lazilyload.CardPanelLazilyLoad">
+					<property name="billform" ref="billForm" />
+				</bean>
+				<bean class="nc.ui.pubapp.uif2app.lazilyload.ListPanelLazilyLoad">
+					<property name="listView" ref="billListView" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- 行号自动处理 -->
+	<bean id="rowNoMediator" class="nc.ui.pubapp.uif2app.view.RowNoMediator">
+		<property name="model" ref="bmModel" />
+		<property name="editor" ref="billForm" />
+	</bean>
+	<!-- 双击列表行后显示卡片 -->
+	<bean id="mouseClickShowPanelMediator" class="nc.ui.pubapp.uif2app.view.MouseClickShowPanelMediator">
+		<property name="listView" ref="billListView" />
+		<property name="showUpComponent" ref="billForm" />
+		<property name="hyperLinkColumn" value="vbillcode" />
+	</bean>
+	<!-- 单据号 -->
+	<bean id="billCodeMediator" class="nc.ui.pubapp.bill.BillCodeMediator" init-method="initUI">
+		<property name="billForm" ref="billForm"></property>
+		<property name="billCodeKey" value="vbillcode"></property>
+		<property name="billType" value="ZF06"></property>
+	</bean>
+
+
+
+	<!-- Action部分 ***********************************************************-->
+	<!--======= 动作：[newActions] [新增] ===========-->
+	<bean id="addAction" class="nc.ui.pubapp.uif2app.actions.AddAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="interceptor">
+			<bean class="nc.ui.pubapp.uif2app.actions.interceptor.CompositeActionInterceptor">
+				<property name="interceptors">
+					<list>
+						<bean class="nc.ui.pubapp.uif2app.actions.interceptor.ShowUpComponentInterceptor">
+							<property name="showUpComponent" ref="billForm" />
+						</bean>
+						<!--此处可以扩展添加自己的拦截器-->
+					</list>
+				</property>
+			</bean>
+		</property>
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<!--======= 动作：[newActions] [修改] ===========-->
+	<bean id="editAction" class="nc.ui.pubapp.uif2app.actions.EditAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<!--======= 动作：[newActions] [删除] ===========-->
+	<bean id="deleteScriptAction" class="nc.ui.pubapp.uif2app.actions.pflow.DeleteScriptAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="billType" value="ZF06" />
+		<property name="filledUpInFlow" value="true" />
+		<property name="actionName" value="DELETE" />
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<bean id="defaultQueryActionQueryTemplateContainer" class="nc.ui.uif2.editor.QueryTemplateContainer">
+		<property name="nodeKey" value="qt" />
+		<property name="context"><ref bean="context"/></property>
+	</bean>
+
+	<!--======= 动作：[newActions] [查询] ===========-->
+	<bean id="defaultQueryAction" class="nc.ui.pubapp.uif2app.query2.action.DefaultQueryAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="templateContainer"><ref bean="defaultQueryActionQueryTemplateContainer" /></property>
+		<property name="nodeKey" value="qt"></property>
+		<property name="dataManager"><ref bean="bmModelModelDataManager"/></property>
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+		<property name="btnName" value="查询" />
+	</bean>
+
+	<!--======= 动作：[newActions] [复制] ===========-->
+	<bean id="copyAction" class="nc.ui.pubapp.uif2app.actions.CopyAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="editor"><ref bean="billForm"/></property>
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<!--======= 动作：[newActions] [刷新] ===========-->
+	<bean id="defaultRefreshAction" class="nc.ui.pubapp.uif2app.query2.action.DefaultRefreshAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="dataManager"><ref bean="bmModelModelDataManager"/></property>
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<!--======= 动作：[newActions] [提交] ===========-->
+	<bean id="commitScriptAction" class="nc.ui.pubapp.uif2app.actions.pflow.CommitScriptAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="editor"><ref bean="billForm"/></property>
+		<property name="billType" value="ZF06" />
+		<property name="filledUpInFlow" value="true" />
+		<property name="actionName" value="SAVE" />
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<!--======= 动作：[newActions] [收回] ===========-->
+	<bean id="unCommitScriptAction" class="nc.ui.pubapp.uif2app.actions.pflow.UnCommitScriptAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="editor"><ref bean="billForm"/></property>
+		<property name="billType" value="ZF06" />
+		<property name="filledUpInFlow" value="true" />
+		<property name="actionName" value="UNSAVEBILL" />
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<!--======= 动作：[newActions] [审批] ===========-->
+	<bean id="approveScriptAction" class="nc.ui.pubapp.uif2app.actions.pflow.ApproveScriptAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="editor"><ref bean="billForm"/></property>
+		<property name="billType" value="ZF06" />
+		<property name="filledUpInFlow" value="true" />
+		<property name="actionName" value="APPROVE" />
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<!--======= 动作：[newActions] [取消审批] ===========-->
+	<bean id="uNApproveScriptAction" class="nc.ui.pubapp.uif2app.actions.pflow.UNApproveScriptAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="editor"><ref bean="billForm"/></property>
+		<property name="billType" value="ZF06" />
+		<property name="filledUpInFlow" value="true" />
+		<property name="actionName" value="UNAPPROVE" />
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<!--======= 动作：[newActions] [联查单据] ===========-->
+	<bean id="linkQueryAction" class="nc.ui.pubapp.uif2app.actions.LinkQueryAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<!--======= 动作：[newActions] [预览] ===========-->
+	<bean id="metaDataBasedPrintAction" class="nc.ui.pubapp.uif2app.actions.MetaDataBasedPrintAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="actioncode" value="Preview"></property>
+		<property name="actionname" value="预览"></property>
+		<property name="preview" value="true"></property>
+		<property name="nodeKey" value="ot" />
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+		<property name="btnName" value="预览" />
+	</bean>
+
+	<!--======= 动作：[newActions] [打印] ===========-->
+	<bean id="metaDataBasedPrintActiona" class="nc.ui.pubapp.uif2app.actions.MetaDataBasedPrintAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="actioncode" value="Print"></property>
+		<property name="actionname" value="打印"></property>
+		<property name="preview" value="false"></property>
+		<property name="nodeKey" value="ot" />
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+		<property name="btnName" value="打印" />
+	</bean>
+
+	<!--======= 动作：[newActions] [输出...] ===========-->
+	<bean id="outputAction" class="nc.ui.pubapp.uif2app.actions.OutputAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="editor"><ref bean="billForm"/></property>
+		<property name="nodeKey" value="ot" />
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<!--======= 动作：[newActions] [查看审批意见] ===========-->
+	<bean id="pFApproveStatusInfoAction" class="nc.ui.pubapp.uif2app.actions.pflow.PFApproveStatusInfoAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<!--======= 动作：[newActions] [保存] ===========-->
+	<bean id="saveScriptAction" class="nc.ui.pubapp.uif2app.actions.pflow.SaveScriptAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="editor"><ref bean="billForm"/></property>
+		<property name="billType" value="ZF06" />
+		<property name="filledUpInFlow" value="true" />
+		<property name="actionName" value="SAVEBASE" />
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<!--======= 动作：[newActions] [取消] ===========-->
+	<bean id="cancelAction" class="nc.ui.pubapp.uif2app.actions.CancelAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="editor"><ref bean="billForm"/></property>
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+	</bean>
+
+	<!--分隔按钮-->
+	<bean id="separatorAction" class="nc.funcnode.ui.action.SeparatorAction" />
+    
+	<bean id="exceptionHandler" class="nc.ui.uif2.DefaultExceptionHanler">
+		<constructor-arg><ref bean="container"/></constructor-arg>
+		<property name="context"><ref bean="context" /></property>
+	</bean>
+	
+	<!-- 批量保存校验服务类 -->
+	
+	<!-- 卡片刷新动作 ZF 2019年5月30日16:59:42 -->
+	<bean id="refreshCardAction" class="nc.ui.pubapp.uif2app.actions.RefreshSingleAction">
+		<property name="model" ref="bmModel" />
+	</bean>
+	<!-- END -->
+	
+	<!-- 取数 ZF 2019年7月23日18:25:44 -->
+	<bean id="qushuAction" class="nc.ui.zfpms.yyrb.ace.action.QuShuAction">
+		<property name="model"><ref bean="bmModel"/></property>
+		<property name="editor"><ref bean="billForm"/></property>
+		<property name="listview"><ref bean="billListView"/></property>
+		<property name="exceptionHandler"><ref bean="exceptionHandler" /></property>
+		<property name="dataType" value="1" /><!-- 餐饮收款明细表 -->
+	</bean>
+	<!-- END -->
+	
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="gbk"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="billType" class="nc.pubapp.pade.platform.vo.Billtype"><property name="billtypename" value="餐饮收款明细"/>
+<property name="canextendtransaction" value="true"/>
+<property name="component" value="zfpms_data"/>
+<property name="isPublished" value="false"/>
+<property name="isapprovebill" value="true"/>
+<property name="istransaction" value="false"/>
+<property name="nodecode" value="ZFJ10106"/>
+<property name="pk_billtypecode" value="ZF06"/>
+<property name="pk_billtypeid" value="0001ZZ1000000002D646"/>
+<property name="pk_group" value="~"/>
+<property name="pk_org" value="GLOBLE00000000000000"/>
+<property name="systemcode" value="ZFpms"/>
+<property name="ts" value="2019-07-17 10:58:33"/>
+</bean>
+
+</beans>

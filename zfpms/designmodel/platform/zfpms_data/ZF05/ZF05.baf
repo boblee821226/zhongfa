@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="gbk"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="billactionTotal" class="nc.pubapp.pade.platform.vo.BillactionTotal"><property name="actionList">
+<list><bean class="nc.pubapp.pade.platform.vo.Billaction"><property name="action_type" value="10"/>
+<property name="actionnote" value="送审"/>
+<property name="actionstyle" value="1"/>
+<property name="actiontype" value="SAVE"/>
+<property name="constrictflag" value="false"/>
+<property name="controlflag" value="false"/>
+<property name="finishflag" value="false"/>
+<property name="pk_billaction" value="0001ZZ100000000224LF"/>
+<property name="pk_billtype" value="ZF05"/>
+<property name="pk_billtypeid" value="0001ZZ100000000224LE"/>
+</bean>
+<bean class="nc.pubapp.pade.platform.vo.Billaction"><property name="action_type" value="11"/>
+<property name="actionnote" value="审核"/>
+<property name="actionstyle" value="2"/>
+<property name="actiontype" value="APPROVE"/>
+<property name="constrictflag" value="false"/>
+<property name="controlflag" value="false"/>
+<property name="finishflag" value="false"/>
+<property name="pk_billaction" value="0001ZZ100000000224LG"/>
+<property name="pk_billtype" value="ZF05"/>
+<property name="pk_billtypeid" value="0001ZZ100000000224LE"/>
+</bean>
+<bean class="nc.pubapp.pade.platform.vo.Billaction"><property name="action_type" value="13"/>
+<property name="actionnote" value="收回"/>
+<property name="actionstyle" value="3"/>
+<property name="actiontype" value="UNSAVEBILL"/>
+<property name="constrictflag" value="false"/>
+<property name="controlflag" value="true"/>
+<property name="finishflag" value="true"/>
+<property name="pk_billaction" value="0001ZZ100000000224LH"/>
+<property name="pk_billtype" value="ZF05"/>
+<property name="pk_billtypeid" value="0001ZZ100000000224LE"/>
+</bean>
+<bean class="nc.pubapp.pade.platform.vo.Billaction"><property name="action_type" value="12"/>
+<property name="actionnote" value="弃审"/>
+<property name="actionstyle" value="3"/>
+<property name="actiontype" value="UNAPPROVE"/>
+<property name="constrictflag" value="false"/>
+<property name="controlflag" value="false"/>
+<property name="finishflag" value="true"/>
+<property name="pk_billaction" value="0001ZZ100000000224LI"/>
+<property name="pk_billtype" value="ZF05"/>
+<property name="pk_billtypeid" value="0001ZZ100000000224LE"/>
+</bean>
+<bean class="nc.pubapp.pade.platform.vo.Billaction"><property name="action_type" value="30"/>
+<property name="actionnote" value="删除"/>
+<property name="actionstyle" value="3"/>
+<property name="actiontype" value="DELETE"/>
+<property name="constrictflag" value="false"/>
+<property name="controlflag" value="false"/>
+<property name="finishflag" value="false"/>
+<property name="pk_billaction" value="0001ZZ100000000224LJ"/>
+<property name="pk_billtype" value="ZF05"/>
+<property name="pk_billtypeid" value="0001ZZ100000000224LE"/>
+</bean>
+<bean class="nc.pubapp.pade.platform.vo.Billaction"><property name="action_type" value="31"/>
+<property name="actionnote" value="保存"/>
+<property name="actionstyle" value="1"/>
+<property name="actiontype" value="SAVEBASE"/>
+<property name="constrictflag" value="true"/>
+<property name="controlflag" value="false"/>
+<property name="finishflag" value="false"/>
+<property name="pk_billaction" value="0001ZZ100000000224LK"/>
+<property name="pk_billtype" value="ZF05"/>
+<property name="pk_billtypeid" value="0001ZZ100000000224LE"/>
+</bean>
+</list>
+</property>
+<property name="billtypecode" value="ZF05"/>
+<property name="pk_billtypeid" value="0001ZZ100000000224LE"/>
+</bean>
+
+</beans>

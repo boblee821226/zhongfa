@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="gbk"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="funcregister" class="nc.pubapp.pade.funcmodel.vo.FuncRegister"><property name="bmf_path" value="zfpms\METADATA\zfpms_data.bmf"/>
+<property name="busiActiveList">
+<list></list>
+</property>
+<property name="cfunid" value="0001ZZ10000000021XT4"/>
+<property name="class_name" value="nc.ui.pubapp.uif2app.ToftPanelAdaptorEx"/>
+<property name="dr" value="0"/>
+<property name="fun_name" value="稽核底表"/>
+<property name="fun_property" value="0"/>
+<property name="funcRegisterButtonList">
+<list></list>
+</property>
+<property name="funcRegisterParamList">
+<list><bean class="nc.pubapp.pade.funcmodel.vo.FuncRegisterParam"><property name="dr" value="0"/>
+<property name="paramname" value="BeanConfigFilePath"/>
+<property name="paramvalue" value="nc/ui/zfpms/jhdb/ace/view/Zfpms_data_config.xml"/>
+<property name="parentid" value="0001ZZ10000000021XT4"/>
+<property name="pk_param" value="0001ZZ10000000021XT5"/>
+<property name="ts" value="2019-05-30 14:50:08"/>
+</bean>
+</list>
+</property>
+<property name="funcode" value="ZFJ10102"/>
+<property name="funnode_path" value="zfpms\designmodel\ace\client\ZFJ10102.fnf"/>
+<property name="funtype" value="0"/>
+<property name="isbuttonpower" value="false"/>
+<property name="isenable" value="true"/>
+<property name="isfunctype" value="false"/>
+<property name="menuModelFilePath" value="zfpms/designmodel/funcmodel/zfpms_data/menuitemregis/ZFJ10102.menu"/>
+<property name="metaDataID" value="012c3fb6-e229-4482-a20d-58e5b8284e54"/>
+<property name="moduleName" value="zfpms"/>
+<property name="orgtypecode" value="FINANCEORGTYPE000000"/>
+<property name="own_module" value="ZFJ1"/>
+<property name="pageList">
+<list></list>
+</property>
+<property name="parent_id" value="0001A110000000021V45"/>
+<property name="pk_group" value="~"/>
+<property name="ts" value="2019-05-30 14:50:08"/>
+<property name="uif2model_path" value="zfpms\designmodel\ace\uif2model\ZFJ10102.umf"/>
+</bean>
+
+</beans>

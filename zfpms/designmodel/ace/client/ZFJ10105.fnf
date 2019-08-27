@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="gbk"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="general" class="nc.pubapp.pade.code.funnode.FunNodePara">
+        <property name="moduleName" value="zfpms" />
+	    <property name="bpfPath" value="test.bpf" />
+	    <property name="funcode" value="ZFJ10105"/>
+	    <property name="funNodeName" value="mxrkqjb"/>
+	    <property name="clientPackName" value="nc.ui.zfpms.mxrkqjb"/>
+			  		<property name="dbilldDate" value="Dbilldate" />
+			    <property name="metaData" value="zfpms\METADATA\zfpms_data.bmf" />
+	    <property name="xmlPath" value="zfpms\src\client\nc\ui\zfpms\mxrkqjb\ace\view\Zfpms_data_config.xml" />
+	    <property name="metaDataType" value="multiType" />
+	    <property name="funcregispath" value="zfpms/designmodel/funcmodel/zfpms_data/funcregis/ZFJ10105.func" />
+	    <property name="quetempath" value="zfpms/designmodel/templet/zfpms_data/querytemplet/ZFJ10105.qtf" />
+	    <property name="printtempath" value="zfpms/designmodel/templet/zfpms_data/outtemplet/ZFJ10105.otf" />
+	    <property name="systembasepath" value="zfpms/designmodel/systemplatebase/zfpms_data/ZFJ10105/ZFJ10105.stb" />
+	    <property name="extendSuffix" value=""/>
+	    <property name="uif2ModelFilePath" value="zfpms\designmodel\ace\uif2model\ZFJ10105.umf"/>
+	    <property name="busiCompName" value="zfpms"/>
+	    <property name="metaDataId" value="012c3fb6-e229-4482-a20d-58e5b8284e54"/>
+	</bean>
+	
+	<bean id="templet" class="nc.pubapp.pade.code.funnode.Templet">
+	    <property name="tempStyle" value="2" />
+	    <property name="nodeKey" value="" />
+		<property name="templetPath" value="zfpms/designmodel/templet/zfpms_data/billtemplet/ZFJ10105.btf" />
+	</bean>
+
+	<bean id="BAEHpara" class="nc.pubapp.pade.code.funnode.BodyAfterEditHandlerPara">
+		<property name="itemList">
+			<list>
+							</list>
+		</property>
+	</bean>
+
+	<bean id="BBEHpara" class="nc.pubapp.pade.code.funnode.BodyBeforeEditHandlerPara">
+		<property name="itemList">
+			<list>
+							</list>
+		</property>
+	</bean>
+	
+	<bean id="HTBEHpara" class="nc.pubapp.pade.code.funnode.HeadTailBeforeEditHandlerPara">
+	</bean>
+	
+	<bean id="HTAEHpara" class="nc.pubapp.pade.code.funnode.HeadTailAfterEditHandlerPara">
+	</bean>
+	
+	<bean id="SerPropara" class="nc.pubapp.pade.code.funnode.ServiceProxyPara">
+					<property name="queryByQueryScheme">
+			<bean class="nc.pubapp.pade.code.funnode.ServiceProxyItemPara">
+				<property name="fullClassName" value="nc.itf.zfpms.IZfpms_dataMaintain" />
+				<property name="itmClassName" value=".IZfpms_dataMaintain" />
+				<property name="methodName" value="query" />
+			</bean>
+		</property>
+				</bean>
+	
+	<bean id="FilePackNameBean" class="nc.pubapp.pade.code.engine.FilePackNamePara">
+    	<property name="filePackNameList">
+	    	<list>
+				     						       <value>nc.ui.zfpms.mxrkqjb.handler.OrgChangedHandler.java</value>
+			       <value>nc.ui.zfpms.mxrkqjb.ace.handler.AceAddHandler.java</value>
+			       <value>nc.ui.zfpms.mxrkqjb.ace.handler.AceBodyAfterEditHandler.java</value>
+			       <value>nc.ui.zfpms.mxrkqjb.ace.handler.AceBodyBeforeEditHandler.java</value>
+			       <value>nc.ui.zfpms.mxrkqjb.ace.handler.AceHeadTailAfterEditHandler.java</value>
+			       <value>nc.ui.zfpms.mxrkqjb.ace.handler.AceHeadTailBeforeEditHandler.java</value>
+			       <value>nc.ui.zfpms.mxrkqjb.ace.handler.AceOrgChangedHandler.java</value>
+			       <value>nc.ui.zfpms.mxrkqjb.ace.serviceproxy.AceZfpms_dataMaintainProxy.java</value>
+			       <value>nc.ui.zfpms.mxrkqjb.action.Zfpms_dataAddAction.java</value>
+			       <value>nc.ui.zfpms.mxrkqjb.action.Zfpms_dataDeleteAction.java</value>
+			       <value>nc.ui.zfpms.mxrkqjb.action.Zfpms_dataEditAction.java</value>
+			       <value>nc.ui.zfpms.mxrkqjb.action.CopyActionProcessor.java</value>
+			     			       <value>nc.ui.zfpms.mxrkqjb.query.Zfpms_dataQueryConditionInitializer.java</value>
+		     </list>
+	   </property>
+	</bean>
+
+</beans>
