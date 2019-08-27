@@ -10,7 +10,7 @@ import nc.vo.pub.lang.UFBoolean;
 import nc.vo.sm.funcreg.ModuleVO;
 /**
  * 系统模块。 创建日期：(2003-9-4 11:57:32)
- *
+ * 
  * @author：郭宝华
  */
 public class DapSystemDataCache {

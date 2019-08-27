@@ -1,5 +1,10 @@
 package nc.itf.zfpms;
 
+/**
+ * 工具类
+ * @author libin
+ *
+ */
 public class IZfpms_Tool {
 	public final static String ZF01 = "ZF01";	// 营业日报
 	public final static String ZF02 = "ZF02";	// 稽核底表
