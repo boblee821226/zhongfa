@@ -24,7 +24,6 @@ import nc.vo.fip.service.FipRelationInfoVO;
 import nc.vo.pub.BusinessException;
 import nc.vo.pub.SuperVO;
 import nc.vo.pub.billtype.BilltypeVO;
-import nc.vo.pub.lang.UFBoolean;
 import nc.vo.pub.lang.UFDouble;
 import nc.vo.pub.tools.PuPubVO;
 import nc.vo.pubapp.pattern.model.entity.bill.AbstractBill;
